@@ -9,12 +9,14 @@
 #import "ViewController.h"
 #import "Mapbox.h"
 #import "SLSlideViewController.h"
+#import "SLLocationManager.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()
 
 @property (nonatomic, strong) UIView *touchStopperView;
 @property (nonatomic, strong) UIButton *showSlideControllerButton;
+@property (nonatomic, strong) SLLocationManager *locationManager;
 
 @end
 
@@ -36,8 +38,14 @@
     RMMapBoxSource *source = [[RMMapBoxSource alloc] initWithMapID:@"acgreen1226.98d39090"];
     RMMapView *mapView = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:source];
     mapView.zoom = 2;
+    mapView.centerCoordinate = CLLocationCoordinate2DMake(37.761927, -122.421165);
     mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:mapView];
+    
+    self.locationManager = [SLLocationManager new];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.persmissionState = SLLocationManagerPermissionStateDenied;
     
     self.showSlideControllerButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     self.showSlideControllerButton.backgroundColor = [UIColor purpleColor];

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLSlideViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <SLSliceViewControllerDelegate>
+
+
 
 
 @end

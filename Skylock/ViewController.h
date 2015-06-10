@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SLSlideViewController.h"
+#import "SLLocationManager.h"
 
-@interface ViewController : UIViewController <SLSliceViewControllerDelegate>
+@interface ViewController : UIViewController <SLSliceViewControllerDelegate, CLLocationManagerDelegate>
 
 
 

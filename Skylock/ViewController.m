@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Mapbox.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    RMMapBoxSource *source = [[RMMapBoxSource alloc] initWithMapID:@"acgreen1226.98d39090"];
+
+    RMMapView *mapView = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:source];
+    
+    mapView.zoom = 2;
+    
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    
+    [self.view addSubview:mapView];
 }
 
 - (void)didReceiveMemoryWarning {
